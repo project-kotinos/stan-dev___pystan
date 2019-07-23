@@ -1,6 +1,6 @@
 dependencies:
   build: 
-    - anaconda3:4.3.30
+    - anaconda3:4.2.12
     
 build_targets:
   - name: init
