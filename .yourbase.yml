@@ -11,7 +11,6 @@ build_targets:
     build_after:
       - init
     commands:
-      - conda update --yes --quiet conda
       - conda python=3.6 pip Cython numpy scipy nose matplotlib pandas
       - bash continuous_integration/test_script.sh --exclude="^test_[a-p].*\.py"
       
