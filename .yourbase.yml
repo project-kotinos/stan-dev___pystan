@@ -1,0 +1,21 @@
+dependencies:
+  build: 
+    - python:3.6.3
+    
+build_targets:
+  - name: init
+    commands:
+      - git submodule update --init --recursive
+  - name: python36
+    build_after:
+      - init
+    environment:
+      - TRAVIS_PYTHON_VERSION=3.6 
+      - TESTS_EXCLUDE_RE='^test_[a-p].*\.py'
+    commands:
+      - bash continuous_integration/test_script.sh --exclude="$TESTS_EXCLUDE_RE"
+      
+ci:
+  builds:
+    - name: python3.6
+      build_target: python36
