@@ -7,14 +7,26 @@ build_targets:
   - name: init
     commands:
       - git submodule update --init --recursive
+      
+  - name: python27
+    build_after:
+      - init
+    commands:
+      - conda install python=2.7 pip Cython=0.22 numpy=1.10.1 scipy nose matplotlib pandas
+      - python setup.py install
+      - bash continuous_integration/test_script.sh --exclude="^test_[a-p].*\.py"
+      
   - name: python36
     build_after:
       - init
     commands:
-      - conda python=3.6 pip Cython numpy scipy nose matplotlib pandas
+      - conda install python=3.6 pip Cython numpy scipy nose matplotlib pandas
+      - python setup.py install
       - bash continuous_integration/test_script.sh --exclude="^test_[a-p].*\.py"
       
 ci:
   builds:
     - name: python3.6
       build_target: python36
+    - name: python2.7
+      build_target: python27
