@@ -1,6 +1,7 @@
 dependencies:
   build: 
     - python:3.6.3
+    - anaconda3:4.3.30
     
 build_targets:
   - name: init
@@ -9,11 +10,10 @@ build_targets:
   - name: python36
     build_after:
       - init
-    environment:
-      - TRAVIS_PYTHON_VERSION=3.6 
-      - TESTS_EXCLUDE_RE='^test_[a-p].*\.py'
     commands:
-      - bash continuous_integration/test_script.sh --exclude="$TESTS_EXCLUDE_RE"
+      - conda update --yes --quiet conda
+      - conda python=3.6 pip Cython numpy scipy nose matplotlib pandas
+      - bash continuous_integration/test_script.sh --exclude="^test_[a-p].*\.py"
       
 ci:
   builds:
