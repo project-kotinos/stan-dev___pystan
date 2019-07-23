@@ -1,6 +1,5 @@
 dependencies:
   build: 
-    - python:3.6.3
     - anaconda3:4.3.30
     
 build_targets:
