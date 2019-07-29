@@ -1,5 +1,5 @@
-PyStan: The Python Interface to Stan
-====================================
+PyStan: The Python Interface to Stan!
+=====================================
 
 .. image:: https://raw.githubusercontent.com/stan-dev/logos/master/logo.png
     :alt: Stan logo
